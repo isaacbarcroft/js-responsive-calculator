@@ -17,157 +17,223 @@
 // let buttonEqual = document.querySelector('button[value="="]');
 // let numberButtons = document.querySelectorAll('.number');
 let keys = document.querySelector('.calculator-keys');
+let numberButtons = document.querySelector('.number');
+let operator = document.querySelector('.operator');
+let equal = document.querySelector('.equal-sign');
+
+keys.addEventListener('click', pushNumber);
+operator.addEventListener('click', pushOperator);
+
+function pushNumber(numberButtons) {
+    // const target = event.target;
+    alert(numberButtons.target.value);
+    console.log(numberButtons.target.value);
+    console.log(keys);
+}
 
 
-keys.addEventListener('click', (event) => {
-    console.log({calculator})
+function pushOperator(operator) {
+// const operator = operator.target;
+alert(operator.target.value);
+
+}
+
+function calculate(equal) {
+    alert(equal.target.value);
+    console.log(equal.target.value);
+    console.log(keys);
+}
 
 
-    console.log(event)
-    console.log(event.target)
-    console.log(event.target.value)
 
-    const target = event.target;
 
-    if (!target.matches('button')) {
-      return;
-    }
 
-    if (target.matches('.plus-minus')){
-        return;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// keys.addEventListener('click', (event) => {
+//     console.log({calculator})
+
+    
+//     console.log(event)
+//     console.log(event.target)
+//     console.log(event.target.value)
+
+//     const target = event.target;
+
+//     if (!target.matches('button')) {
+//       return;
+//     }
+
+//     if (target.classList.contains('.plus-minus')){
+//         plusMinus();
+//         updateDisplay();
+//         return;
+//     }
   
-    if (target.classList.contains('operator')) {
-        handleOperator(target.value);
-        updateDisplay();
-      return;
-    }
+//     if (target.classList.contains('operator')) {
+//         handleOperator(target.value);
+//         updateDisplay();
+//       return;
+//     }
   
-    if (target.classList.contains('decimal')) {
-        inputDecimal(target.value);
-        updateDisplay();
-      return;
-    }
+//     if (target.classList.contains('decimal')) {
+//         inputDecimal(target.value);
+//         updateDisplay();
+//       return;
+//     }
   
-    if (target.classList.contains('clear')) {
-      clear();
-      updateDisplay();
-      return;
-    }
+//     if (target.classList.contains('clear')) {
+//       clear();
+//       updateDisplay();
+//       return;
+//     }
   
-    inputDigit(target.value);
-    updateDisplay();
-  });
+//     inputDigit(target.value);
+//     updateDisplay();
+//   });
 
 
 
 
-// function appendNumber(number){
+// // function appendNumber(number){
 
-// }
-// function chooseOperation(operation){
+// // }
+// // function chooseOperation(operation){
 
-// }
+// // }
 
 
-const calculator = {
-    displayValue: '0',
-    firstOperand: null,
-    waitingForSecondOperand: false,
-    operator: null,
-  };
+// const calculator = {
+//     displayValue: '0',
+//     firstOperand: null,
+//     waitingForSecondOperand: false,
+//     operator: null,
+//     plusMinus: null,
+
+//   };
 
 
  
     
-  function inputDecimal(dot){
-    if (!calculator.displayValue.includes(dot)) {
-        calculator.displayValue += dot;
+//   function inputDecimal(dot){
+//     if (!calculator.displayValue.includes(dot)) {
+//         calculator.displayValue += dot;
        
-      }
-    }
+//       }
+//     }
 
-    function handleOperator(nextOperator) {
-            const firstOperand = calculator.firstOperand
-            const displayValue = calculator.displayValue
-            const operator = calculator.operator
+//     function plusMinus(){
+//       var newValue = parseFloat(calculator.displayValue);
+//         if (newValue >= 0) {
+//            calculator.displayValue = newValue + -1;
+//           }
+//         }
+
+
+//     function handleOperator(nextOperator) {
+//             const firstOperand = calculator.firstOperand
+//             const displayValue = calculator.displayValue
+//             const operator = calculator.operator
+            
            
-            const inputValue = parseFloat(displayValue);
+//             const inputValue = parseFloat(displayValue);
         
-            if (firstOperand === null && !isNaN(inputValue)) {
-              calculator.firstOperand = inputValue;
-            }
+//             if (firstOperand === null && !isNaN(inputValue)) {
+//               calculator.firstOperand = inputValue;
+//             }
           
-            calculator.waitingForSecondOperand = true;
-            calculator.operator = nextOperator;
-          }
+//             calculator.waitingForSecondOperand = true;
+//             calculator.operator = nextOperator;
+//           }
           
-          function compute (firstOperand, secondOperand, operator){
-              console.log(firstOperand)
-              console.log(secondOperand)
-              console.log(operator)
+
+
+
+//           function compute (firstOperand, secondOperand, operator, plusMinus){
+//               console.log(firstOperand)
+//               console.log(secondOperand)
+//               console.log(operator)
               
-              const displayValue = calculator.displayValue;
-              console.log(displayValue)
-
+//               const displayValue = calculator.displayValue;
+//               console.log(displayValue)
               
-            if (operator === '+') {
-                console.log('why')
-                return firstOperand + parseFloat(secondOperand);
               
-            } else if (operator === '-' ){
-                return firstOperand - parseFloat(secondOperand); 
-            } else if (operator === '*') {
-                return firstOperand * parseFloat(secondOperand); 
-            } else if (operator === '/') {
-                return firstOperand / parseFloat(secondOperand); 
-            } else if (operator === 'plus-minus') {
-                if (displayValue >= 0){
-                    return displayValue;
-                } 
-               Number(displayValue);
-                return  Math.abs(displayValue);
-            }
-            return secondOperand;
-          }
-        function clear(){
-          calculator.displayValue = '0';
-          calculator.firstOperand = null;
-          calculator.waitingForSecondOperand = false;
-          calculator.operator = null;
-          console.log(calculator);
-        }
+//             if (operator === '+') {
+                
+//                 return firstOperand + parseFloat(secondOperand);
+              
+//             } else if (operator === '-' ){
+//                 return firstOperand - parseFloat(secondOperand); 
+//             } else if (operator === '*') {
+//                 return firstOperand * parseFloat(secondOperand); 
+//             } else if (operator === '/') {
+//                 return firstOperand / parseFloat(secondOperand); 
+//              }
+//             //  else if (operator === 'plus-minus') {
+//             //     if (displayValue >= 0){
+//             //         return displayValue;
+//             //         console.log(displayValue);
+//             //     } 
+                
+//             //     return  displayValue * -1;
+//             // }
+//             return secondOperand;
+//           }
 
-  function inputDigit(digit) {
 
-      const firstOperand = calculator.firstOperand
-      const waitingForSecondOperand = calculator.waitingForSecondOperand
-      const operator = calculator.operator
-const displayValue = calculator.displayValue
-      // if digit is an equals sign.... if 
-      if (digit === '='){ /// DO MORE
-          let value = compute(firstOperand, displayValue , operator);
-          calculator.displayValue = value 
-          calculator.waitingForSecondOperand = true;
-          return calculator.displayValue
-      }
+
+//         function clear(){
+//           calculator.displayValue = '0';
+//           calculator.firstOperand = null;
+//           calculator.waitingForSecondOperand = false;
+//           calculator.operator = null;
+//           console.log(calculator);
+//         }
 
 
 
 
+//   function inputDigit(digit) {
 
-      if (waitingForSecondOperand === true) {
-        calculator.displayValue = digit;
-        calculator.waitingForSecondOperand = false;
-      } else {
-      calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
-  }
-}
+//       const firstOperand = calculator.firstOperand
+//       const waitingForSecondOperand = calculator.waitingForSecondOperand
+//       const operator = calculator.operator
+// const displayValue = calculator.displayValue
+//       // if digit is an equals sign.... if 
+//       if (digit === '='){ /// DO MORE
+//           let value = compute(firstOperand, displayValue , operator);
+//           calculator.displayValue = value 
+//           calculator.waitingForSecondOperand = true;
+//           return calculator.displayValue
+//       }
 
 
-function updateDisplay(){
-    const display = document.querySelector('.calculator-screen')
-   display.value = calculator.displayValue;
-}
+//       if (waitingForSecondOperand === true) {
+//         calculator.displayValue = digit;
+//         calculator.waitingForSecondOperand = false;
+//       } else {
+//       calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+//   }
+// }
+
+
+
+
+// function updateDisplay(){
+//     const display = document.querySelector('.calculator-screen')
+//    display.value = calculator.displayValue;
+// }
   
 
