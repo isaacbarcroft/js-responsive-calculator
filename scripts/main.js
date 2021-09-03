@@ -32,6 +32,10 @@ keys.addEventListener('click', (event) => {
     if (!target.matches('button')) {
       return;
     }
+
+    if (target.matches('.plus-minus')){
+        return;
+    }
   
     if (target.classList.contains('operator')) {
         handleOperator(target.value);
@@ -79,6 +83,7 @@ const calculator = {
   function inputDecimal(dot){
     if (!calculator.displayValue.includes(dot)) {
         calculator.displayValue += dot;
+       
       }
     }
 
@@ -101,16 +106,27 @@ const calculator = {
               console.log(firstOperand)
               console.log(secondOperand)
               console.log(operator)
+              
+              const displayValue = calculator.displayValue;
+              console.log(displayValue)
+
+              
             if (operator === '+') {
                 console.log('why')
-                return firstOperand + secondOperand;
+                return firstOperand + parseFloat(secondOperand);
               
             } else if (operator === '-' ){
-                return firstOperand - secondOperand;
+                return firstOperand - parseFloat(secondOperand); 
             } else if (operator === '*') {
-                return firstOperand * secondOperand;
+                return firstOperand * parseFloat(secondOperand); 
             } else if (operator === '/') {
-                return firstOperand / secondOperand; 
+                return firstOperand / parseFloat(secondOperand); 
+            } else if (operator === 'plus-minus') {
+                if (displayValue >= 0){
+                    return displayValue;
+                } 
+               Number(displayValue);
+                return  Math.abs(displayValue);
             }
             return secondOperand;
           }
@@ -127,11 +143,12 @@ const calculator = {
       const firstOperand = calculator.firstOperand
       const waitingForSecondOperand = calculator.waitingForSecondOperand
       const operator = calculator.operator
-      const displayValue = calculator.displayValue
+const displayValue = calculator.displayValue
       // if digit is an equals sign.... if 
-      if (digit === '='){
+      if (digit === '='){ /// DO MORE
           let value = compute(firstOperand, displayValue , operator);
-          calculator.displayValue = value
+          calculator.displayValue = value 
+          calculator.waitingForSecondOperand = true;
           return calculator.displayValue
       }
 
