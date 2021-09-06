@@ -17,32 +17,116 @@
 // let buttonEqual = document.querySelector('button[value="="]');
 // let numberButtons = document.querySelectorAll('.number');
 let keys = document.querySelector('.calculator-keys');
-let numberButtons = document.querySelector('.number');
-let operator = document.querySelector('.operator');
+let numberButtons = document.querySelectorAll('.number');
+let operators = document.querySelectorAll('.operator');
 let equal = document.querySelector('.equal-sign');
+let total = document.querySelector('.calculator-screen').value;
+console.log(total);
+let calculation = [];
+let calculationTotal; 
+// total = calculationTotal;
+let firstNumber = [];
+let currentOperator = null; 
+let secondNumber = [];
 
-keys.addEventListener('click', pushNumber);
-operator.addEventListener('click', pushOperator);
+numberButtons.forEach(function(elem){
+    elem.addEventListener('click', pushNumber)
+    checkEqual();
+});
 
-function pushNumber(numberButtons) {
-    // const target = event.target;
-    alert(numberButtons.target.value);
-    console.log(numberButtons.target.value);
-    console.log(keys);
+operators.forEach(function(elem){
+    elem.addEventListener('click', pushOperator)
+});
+
+equal.addEventListener('click', calculate);
+
+
+
+// operators.addEventListener('click', pushOperator);
+ 
+function pushNumber(digit) {
+    alert(digit.target.value);
+    console.log(currentOperator);
+    // operator = operator.value;
+   if(!currentOperator){
+       console.log(currentOperator, 'firstNumber')
+    return firstNumber.push(digit.target.value);
+   } else {
+    console.log(currentOperator, 'secondNumber')
+       return secondNumber.push(digit.target.value);
+   }
+   
+   //check later
+    // calculation.push((digit.target.value));
+
 }
 
 
 function pushOperator(operator) {
-// const operator = operator.target;
-alert(operator.target.value);
+currentOperator = operator.target.value; 
+console.log(operator);
+alert(currentOperator);
+calculation.push(currentOperator);
 
+console.log(operator);
 }
 
 function calculate(equal) {
     alert(equal.target.value);
+    calculation.push(equal.target.value);
     console.log(equal.target.value);
-    console.log(keys);
+    test(firstNumber,currentOperator, secondNumber);
+    console.log(test(firstNumber,currentOperator, secondNumber));
+
 }
+function test(firstNumber, operator, secondNumber){
+    let num1 = parseFloat(firstNumber.join(''));
+    let num2 = parseFloat(secondNumber.join(''));
+console.log(num1);
+console.log(num2);
+    if (operator == '+') {
+       return total = num1 + num2;
+    } else if (operator == '-'){
+       return total = num1 - num2;
+    } else if (operator == '*'){
+        return total = num1 * num2;
+    }else if (operator == '/'){    
+        return total = num1 / num2;
+    }
+console.log(total);
+}
+
+//    calculation.forEach(function(num1, operator, num2){
+//        console.log(num1);
+// if (calculation.target === '+'){
+//     total.value = num1 + num2;
+// } else if (operator === '-'){
+//     return num1 - num2;
+// } else if (operator === '*'){
+//     return num1 * num2;
+// } else if (operator === '/'){
+//     return num1 / num2;
+// }
+
+
+   
+
+
+    
+/// check this 
+
+    function checkEqual(){
+        for (let i = 0; i < calculation.length; i++) {
+            if (calculation[i] === '=') {
+                alert('=');
+        }
+        console.log(i);
+            // more statements
+         }
+    }
+
+// console.log(calculation.push([numberButtons.value], [operator.value]));
+// console.log(calculation.push(keys.value));
 
 
 
@@ -161,23 +245,7 @@ function calculate(equal) {
 
 
 
-//           function compute (firstOperand, secondOperand, operator, plusMinus){
-//               console.log(firstOperand)
-//               console.log(secondOperand)
-//               console.log(operator)
-              
-//               const displayValue = calculator.displayValue;
-//               console.log(displayValue)
-              
-              
-//             if (operator === '+') {
-                
-//                 return firstOperand + parseFloat(secondOperand);
-              
-//             } else if (operator === '-' ){
-//                 return firstOperand - parseFloat(secondOperand); 
-//             } else if (operator === '*') {
-//                 return firstOperand * parseFloat(secondOperand); 
+//           
 //             } else if (operator === '/') {
 //                 return firstOperand / parseFloat(secondOperand); 
 //              }
