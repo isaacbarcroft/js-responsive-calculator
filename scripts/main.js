@@ -52,10 +52,13 @@ function pushNumber(digit) {
     // operator = operator.value;
    if(!currentOperator){
        console.log(currentOperator, 'firstNumber')
-    return firstNumber.push(digit.target.value);
+       firstNumber.push(digit.target.value);
+       return total.value = firstNumber.join('');
+    
    } else {
     console.log(currentOperator, 'secondNumber')
-       return secondNumber.push(digit.target.value);
+        secondNumber.push(digit.target.value);
+        return total.value = secondNumber.join('');
    }
    
    //check later
