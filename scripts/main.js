@@ -20,10 +20,10 @@ let keys = document.querySelector('.calculator-keys');
 let numberButtons = document.querySelectorAll('.number');
 let operators = document.querySelectorAll('.operator');
 let equal = document.querySelector('.equal-sign');
-let total = document.querySelector('.calculator-screen').value;
-console.log(total);
+let total = document.querySelector('.calculator-screen');
+let clear = document.querySelector('.clear');
 let calculation = [];
-let calculationTotal; 
+
 // total = calculationTotal;
 let firstNumber = [];
 let currentOperator = null; 
@@ -39,6 +39,8 @@ operators.forEach(function(elem){
 });
 
 equal.addEventListener('click', calculate);
+
+clear.addEventListener('click', clearOut); 
 
 
 
@@ -84,16 +86,27 @@ function test(firstNumber, operator, secondNumber){
     let num2 = parseFloat(secondNumber.join(''));
 console.log(num1);
 console.log(num2);
+ 
     if (operator == '+') {
-       return total = num1 + num2;
+        return total.value = num1 + num2;
     } else if (operator == '-'){
-       return total = num1 - num2;
+        return total.value = num1 - num2;
     } else if (operator == '*'){
-        return total = num1 * num2;
+         return total.value = num1 * num2;
     }else if (operator == '/'){    
-        return total = num1 / num2;
+     return total.value = num1 / num2;
+    
     }
-console.log(total);
+
+console.log(total.value);
+}
+
+function clearOut() {
+    total.value = 0;
+    operator = null;
+    firstNumber = [];
+    secondNumber = []; 
+    // clear total.value, operator, firstNumber, secondNumber
 }
 
 //    calculation.forEach(function(num1, operator, num2){
