@@ -5,6 +5,7 @@ let operators = document.querySelectorAll('.operator');
 let equal = document.querySelector('.equal-sign');
 let total = document.querySelector('.calculator-screen');
 let clear = document.querySelector('.clear');
+let plusMinus = document.querySelector('.plus-minus');
 let calculation = [];
 
 // total = calculationTotal;
@@ -25,6 +26,8 @@ equal.addEventListener('click', calculate);
 
 clear.addEventListener('click', clearOut); 
 
+plusMinus.addEventListener('click',plusToMinus);
+
 
 
 // operators.addEventListener('click', pushOperator);
@@ -42,7 +45,6 @@ function pushNumber(digit) {
     console.log(currentOperator, 'secondNumber')
     secondNumber.push(digit.target.value);
     total.value = secondNumber.join('');
-  
     return total.value;
 
    } 
@@ -54,7 +56,9 @@ currentOperator = operator.target.value;
 console.log(operator);
 alert(currentOperator);
 calculation.push(currentOperator); 
-
+console.log(firstNumber);
+        console.log(operator);
+        console.log(currentOperator);
 console.log(operator);
 }
 
@@ -75,6 +79,12 @@ console.log(num2);
     if (operator == '+') {
         return total.value = num1 + num2;
     } else if (operator == '-'){
+        console.log(firstNumber);
+        console.log(operator);
+        console.log(currentOperator);
+        if (firstNumber == []){
+            total.value = firstNumber * -1;
+        }
         return total.value = num1 - num2;
     } else if (operator == '*'){
          return total.value = num1 * num2;
@@ -108,5 +118,15 @@ function clearOut() {
             // more statements
          }
     }
+
+ function plusToMinus(){
+     alert('plusminus')
+     console.log(total.value);
+     if (total.value > 0){
+        return total.value = total.value * -1;
+        
+     } 
+return total.value;
+ }
 
    
